@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.28.xsd">
+
+    <changeSet id="create-categories-table" author="isaac">
+        <createTable tableName="categories">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="VARCHAR(7)" defaultValue="#6B7280"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="categories">
+            <column name="name" value="Bug"/>
+            <column name="color" value="#EF4444"/>
+        </insert>
+
+        <insert tableName="categories">
+            <column name="name" value="Feature"/>
+            <column name="color" value="#10B981"/>
+        </insert>
+
+        <insert tableName="categories">
+            <column name="name" value="Enhancement"/>
+            <column name="color" value="#3B82F6"/>
+        </insert>
+
+        <insert tableName="categories">
+            <column name="name" value="Documentation"/>
+            <column name="color" value="#8B5CF6"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
